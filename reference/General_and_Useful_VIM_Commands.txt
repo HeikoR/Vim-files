@@ -1,0 +1,206 @@
+
+
+:: -------------------------------------------------------------------------------------
+:: Buffers & Windows
+:: -------------------------------------------------------------------------------------
+
+* Buffers
+	:ls			- list all buffers
+	:bn			- next buffer
+	:bd [n]			- delete buffer
+
+* Windows
+
+	:only			- close all windows except the current one
+	:on
+	:close			- close current window
+
+	CTRL-W n		- new window
+	CTRL-W _		- max height
+
+:: -------------------------------------------------------------------------------------
+:: Configuration (.vimrc)
+:: -------------------------------------------------------------------------------------
+
+	:so %			- reload vimrc configuration if it file is open in VIM
+
+	:so $MYVIMRC		- reload the currently active .vimrc
+				- see :echo $MYVIMRC
+
+:: -------------------------------------------------------------------------------------
+:: Copy Paste Commands
+:: -------------------------------------------------------------------------------------
+
+	y			- yank / copy selected
+	yy			- yank / copy current line
+
+
+:: -------------------------------------------------------------------------------------
+:: Directory Commands
+:: -------------------------------------------------------------------------------------
+
+	:pwd			- show current VIM working directory			
+	:cd			- change directory for all VIM windows
+	:lcd			- change directory only for current (local) window
+
+	set autochdir		- automatically change VIM working directory to the file 
+				  you are editing
+
+
+	:edit .			- open file explorer (default: netrw)
+	:e.			- open file explorer (default: netrw)
+	-			- move up a directory
+	<ENTER>			- on folder, go into folder
+	<ENTER>			- on file, open file (and close explorer)
+	<ENTER>			- on .., go back up one folder (parent)
+
+	:Explore		- Expore directory of current file 
+	:E			- Expore directory of current file
+
+	%			- create new file (ESC to abort)
+	d			- create new directory (ESC to abort)
+	R			- rename file under cursor
+	D			- delete file/directory under cursor
+
+
+
+:: -------------------------------------------------------------------------------------
+:: Editing
+:: -------------------------------------------------------------------------------------
+
+	A			- append to end of line
+	O			- insert new line above
+	o			- insert new line below
+
+	u			- undo action
+	CTRL-R			- redo action
+
+:: -------------------------------------------------------------------------------------
+:: Formatting
+:: -------------------------------------------------------------------------------------
+
+* Invisibles
+
+	:set list		- show whitespace chars
+	:set nolist		- hide whitespace chars
+	:set list!		- toggle whitespace chars
+
+* Indentation and Auto Indent (see also :help text-objects)
+
+
+	.			- repeat previous action (eg to repeat previous indent)
+	u			- use undo to undo indent
+
+	<<			- indent single line left
+	>>			- indent single line right
+	[n] <<			- indent [n] lines left
+	[n] >>			- indent [n] lines right	
+	<			- indent block (selected in VISUAL mode) to left
+	>			- indent block (selected in VISUAL mode) to right
+
+	ggVG <...		- select file from TOP to BOTTOM in VISUAL MODE, then shift 
+				  left, repeat shift 3 times
+
+	=			- auto indent block (selected in VISUAL mode)
+	==			- auto indent line
+	[n] ==			- auto indent [n] lines
+	=G			- auto indent from cursor to end of file (motion = G)
+	=i}			- auto indent, inner text, with '}' as char delimiter
+
+* Selecting
+	ggVG			- select whole file in Visual Line mode
+				- (gg = motion to top, V = Visual Line Mode, G = motion to bottom)
+
+	vi}			- v = visual charmode, i = select inner text, use '}' as 
+				  the character DELIMITER for selection
+
+
+
+:: -------------------------------------------------------------------------------------
+:: Loading and Saving
+:: -------------------------------------------------------------------------------------
+
+:: Save file
+	:w [optional filename]
+
+
+
+:: -------------------------------------------------------------------------------------
+:: Search and Replace
+:: -------------------------------------------------------------------------------------
+
+:: search whole file (%) and replace all occurences (g)
+
+	:%s/LPS Trans \([0-9]*\) /\1|/g
+
+* Visual Insert (comment/prepend text)
+	CTRL+V
+	select lines with "hjkl"
+	I
+	TYPE_SOME_TEXT_TO_PREPEND
+	ESC
+
+* Visual Delete (delete character across multiple lines)
+	CTRL+V
+	select lines with "hjkl"
+	x
+	ESC
+
+
+:: -------------------------------------------------------------------------------------
+:: Delete
+:: -------------------------------------------------------------------------------------
+
+:: delete all lines that don't match ("HELLO" in example)
+	: g!/HELLO/d
+
+
+:: -------------------------------------------------------------------------------------
+:: Other
+:: -------------------------------------------------------------------------------------
+
+:: chain commands (|)
+
+
+	:%s/hello/HELLO/g | :%s/bye/BYE/g
+
+
+
+
+	CTRL-Q			- block select		
+				  (use with I to insert with block select - ie for each line selected)
+
+	:version		- print VIM version info (and more)
+	:echo $VIMVARIABLE	- echo VIM Variables 
+				- eg. :echo $VIM
+				- eg. :echo $HOME
+
+
+
+:: -------------------------------------------------------------------------------------
+:: Plugins & Configurations, Indentations, Parsers, etc .. to extend|improve|customize VIM
+:: -------------------------------------------------------------------------------------
+
+TODO: Find better javascript indentation file ?
+	- maybe use Javascript parser ?
+	- JSCTags ?
+
+* Conque		- adds external shell support to VIM
+* Pathogen		- installs plugins into separate folders
+			- allows for easy add/remove of plugins.
+  curl -k -v -so C:\Users\heiko\vimfiles\autoload\pathogen.vim https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
+
+
+:: -------------------------------------------------------------------------------------
+:: Scratch Pad  2012-01-11
+:: -------------------------------------------------------------------------------------
+
+:: Windows version - to sync vim preferences with github
+cd "%UserProfile%"
+rmdir vimfiles /S /Q
+git clone http://github.com/brymck/dotvim.git vimfiles
+del _vimrc
+mklink _vimrc vimfiles\vimrc
+cd vimfiles
+git submodule init
+git submodule update
