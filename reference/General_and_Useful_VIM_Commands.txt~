@@ -83,13 +83,6 @@
 	u			- undo action
 	CTRL-R			- redo action
 
-* Text object selections - (single line selection)
-	vi'			- select section between single quotes
-	vi"			- select section between double quotes
-				- similary you can use {,},[,],(,)
-	va'			- include the single quotes in the selection
-	va"			- include the double quotes in the selection
-
 :: -------------------------------------------------------------------------------------
 :: Formatting
 :: -------------------------------------------------------------------------------------

@@ -121,7 +121,8 @@ highlight SpecialKey guifg=#4a4a59
 " Configure Solarized (Colors)
 " set background=dark|light
 syntax enable
-set background=dark
+set background=light
+let g:solarized_italic=0		" default value is 1
 colorscheme solarized
 
 
@@ -157,4 +158,27 @@ endfunction
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4 
+
+if has("gui_running")
+  " GUI is running or is about to start.
+  " Maximize gvim window.
+  set lines=50 columns=120
+else
+  " This is console Vim.
+  if exists("+lines")
+    set lines=50
+  endif
+  if exists("+columns")
+    set columns=100
+  endif
+endif
+
+" Prevent backup file from being left behind after VIM closes
+set nobackup
+" Prevent backup files from being created while the filee is beign edited
+"set nowritebackup
+
+" Prevent swapfile from being created while file is being edited
+"set noswapfile
+
 
