@@ -169,7 +169,24 @@
 	x
 	ESC
 
+* Basic Search
+	/searchstring		- searches forward for searchstring
+	?searchstring		- searches backward for searchstring
+	n			- find next search result
+	N			- find previous seearch result
+	CTRL-O			- back back where you came from (cursor position)
+	CTRL-I			- go forward where you came from (cursor position)
+* Parentheses Search
+	%			- find matching parentheses (,),[,],{,}
+				- note: if cursor not at a parenthesis, it will find closest to the right
+* Basic Search & Replace
+	:s/wordA/wordB		- search for first occurrence of wordA in LINE, and replace 1st match
+				- (in line) with wordB
+	:s/wordA/wordB/g	- replace all occurrences of wordA in LINE with wordB
+	:%s/wordA/wordB/g	- replace every occurence or A in FILE with B
+	:%s/wordA/wordB/gc	- replace every occurence or A in FILE with B, with a PROMPT for each
 
+	
 :: -------------------------------------------------------------------------------------
 :: Delete
 :: -------------------------------------------------------------------------------------
@@ -187,7 +204,7 @@
 
 	:%s/hello/HELLO/g | :%s/bye/BYE/g
 
-
+	:!			- execute external command
 
 
 	CTRL-Q			- block select		
