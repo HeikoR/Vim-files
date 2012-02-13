@@ -181,4 +181,31 @@ set nobackup
 " Prevent swapfile from being created while file is being edited
 "set noswapfile
 
+"
+" Configure NodeJS dictionary
+"	type CTRL-X CTRL-K CTRL-N
+":set dictionary-=$HOME/bundle/vim-node/dict/node.dict dictionary+=$HOME/bundle/vim-node/dict/node.dict
+set dictionary+=$HOME/vimfiles/bundle/vim-node/dict/node.dict
+" allows us to use CTRL-N (next) and CTRL-P (previous) to cycle through
+" dict
+set complete-=k complete+=k
+
+
+nnoremap ; :				" remaps ; to : in normal mode. Thus save us some keystrokes on typing :
+
+" tab navigation like firefox
+" hwr --> Tried to map shortcut keys to tabs but could get it to work, maybe
+" because there are already keys assigned ... ?????
+":nmap <C-S-tab> :tabprevious<CR>
+":nmap <C-tab> :tabnext<CR>
+":map <C-S-tab> :tabprevious<CR>
+":map <C-tab> :tabnext<CR>
+":imap <C-S-tab> <Esc>:tabprevious<CR>i
+":imap <C-tab> <Esc>:tabnext<CR>i
+":nmap <C-t> :tabnew<CR>
+":imap <C-t> <Esc>:tabnew<CR>
+
+":map <C-S-tab> :tabprevious<CR>
+":map <C-tab> :tabnext<CR>
+":map <C-t> :tabnew<CR>
 
