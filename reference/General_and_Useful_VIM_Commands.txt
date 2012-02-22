@@ -190,6 +190,10 @@
 
 	:%s/LPS Trans \([0-9]*\) /\1|/g
 
+:: search current word (that cursor is onn)
+	*			- search forward
+	#			- search back
+
 * Visual Insert (comment/prepend text)
 	CTRL+V
 	select lines with "hjkl"
@@ -220,7 +224,19 @@
 	:%s/wordA/wordB/g	- replace every occurence or A in FILE with B
 	:%s/wordA/wordB/gc	- replace every occurence or A in FILE with B, with a PROMPT for each
 
-	
+* Advanced Search & Replace (using visual line mode)
+						- sample text                    : aass_XXXX_aa
+						- result after search and replace: aass_HELLO_aa  
+
+	v					- enter visual line mode, and select lines to search and replace
+	:'<'>normal fXct_HELLO
+						- '<'> refers to visual selection
+						- normal	- use normal mode
+						- fX		- find first character X
+						- ct_		- delete everything until _ and change to insert mode 
+						- HELLO		- gets inserted where characters were previously deleted
+
+
 :: -------------------------------------------------------------------------------------
 :: Delete
 :: -------------------------------------------------------------------------------------
