@@ -121,7 +121,14 @@ highlight SpecialKey guifg=#4a4a59
 " Configure Solarized (Colors)
 " set background=dark|light
 syntax enable
-set background=light
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+	//let g:solarized_termcolors=16
+	let g:solarized_contrast = "normal"
+	let g:solarized_visibility= "normal"
+endif
 let g:solarized_italic=0		" default value is 1
 colorscheme solarized
 
