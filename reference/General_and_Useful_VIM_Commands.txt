@@ -247,6 +247,13 @@
 						- ct_		- delete everything until _ and change to insert mode 
 						- HELLO		- gets inserted where characters were previously deleted
 
+* Select and Execute (a replace or any other command)
+	:<range>g/<pattern>/<cmd>		- runs <cmd> on all lines in <range> where <pattern> matches
+	:<range>g/<pattern>/<cmd>		- runs <cmd> on all lines in <range> where <pattern> doesn't match 
+
+	:'<,'>g!/hello/s/app/express	- replace app with express where lines doesn't contain hello
+
+
 
 :: -------------------------------------------------------------------------------------
 :: Delete
