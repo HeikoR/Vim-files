@@ -197,7 +197,18 @@
 :: Save file
 	:w [optional filename]
 
+:: -------------------------------------------------------------------------------------
+:: Macros
+:: -------------------------------------------------------------------------------------
 
+:: Basic Macro recording and replay sequence
+	qa			- q: start recording
+				- a: into register a
+	...			- type sequence of commands that should be recorded
+	q			- stop recording
+
+	@a			- play macro recorded in 'a' (once)
+	2@a			- play macro stored in 'a' twice
 
 :: -------------------------------------------------------------------------------------
 :: Search and Replace

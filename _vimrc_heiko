@@ -125,7 +125,7 @@ if has('gui_running')
     set background=light
 else
     set background=dark
-	//let g:solarized_termcolors=16
+	"let g:solarized_termcolors=16
 	let g:solarized_contrast = "normal"
 	let g:solarized_visibility= "normal"
 endif
@@ -241,7 +241,7 @@ command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 " Shortcut to convert Markdown to Html
 " Requires Node.js installed, and package "gh-markdown-cli"
 ":nmap <LocalLeader>md :!start cmd.exe /c /min "type % \| mdown -o "%.html""<CR>:echo "ran: Markdown 2 Html"<CR>
-:nnoremap <silent> <leader>md :!start cmd /c type %:p \| mdown -o "%:p:r:s,$,.html,"<CR>
+:nnoremap <silent> <leader>md :!start cmd /c type "%:p" \| mdown -o "%:p:r:s,$,.html,"<CR>
 
 
 
