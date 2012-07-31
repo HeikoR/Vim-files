@@ -72,6 +72,31 @@
 	p			- paste after cursor
 	P			- paste before cursor
 
+:: Copy a word and paste it over other words
+	:: Method 1
+	yiw			- yank inner word
+	...			- move cursor to another word
+	viwp		- select word at cursor, then replaced it with yanked word
+	viw"0p		- if you need to paste initial yanked word again then use viw"0p once 
+				  you've moved the cursor below the word to be replaced
+
+	:: Method 2 - better for pasting multiple times as you can repeat with '.'
+	yiw			- yank inner word
+	...			- move cursor to word to be replaced
+	ciw<C-r>0	- select second word, then replace it with yanked word
+				- (if you at beggining of word to be replaced then you can use cw<C-r>0
+	...			- move cursor to another word
+	.			- replace current word with initial yank
+
+:: Copy line to over another line
+	yy			- yank current line
+	...			- move to another line
+	Vp			- select line and replace with yanked line
+	...			- move cursor to another line
+	V"0p		- paste initial yanked line over new line
+
+
+
 :: -------------------------------------------------------------------------------------
 :: Directory Commands
 :: -------------------------------------------------------------------------------------
